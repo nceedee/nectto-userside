@@ -1,29 +1,3 @@
-// import { useState } from "react";
-// import { AppLogo } from "./AppLogo/AppLogo";
-// import { IconMenusLeft } from "./IconMenus/IconMenusLeft";
-// import { Search } from "./Search/Search";
-// import { IconMenusRight } from "./IconMenus/IconMenusRight";
-// import { Card } from "../Global/Card/Card";
-
-// export const Header: React.FC = () => {
-//   return (
-//     <header className="bg-primary shadow-md sticky left-0 top-0 ">
-//       <div className="flex items-center justify-between m-auto h-full w-full  max-w-7xl">
-//         <div className="flex items-center space-x-5">
-//           <AppLogo />
-//           <IconMenusLeft />
-//         </div>
-//         <div>
-//           <Search />
-//         </div>
-//         <div className="pr-8">
-//           <IconMenusRight />
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
 
 import * as React from "react";
 import { useState } from "react";
@@ -44,7 +18,7 @@ export const Header: React.FC<HeaderProps> = () => {
 
   return (
     <header
-      className={`bg-primary shadow-md sticky left-0 top-0 ${
+      className={`bg-primary shadow-md sticky w-full left-0 top-0 ${
         isSearchFocused ? "search-focused" : ""
       }`}
     >
