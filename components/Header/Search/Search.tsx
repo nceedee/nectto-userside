@@ -73,11 +73,7 @@ export const Search: React.FC<ISearchProps> = ({ onFocusChange }) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        {isFocused && (
-          <div className="absolute inset-y-0 right-0 pr-2 flex items-center">
-            <EastIcon  />
-          </div>
-        )}
+       
       </SearchSide>
     </Toolbar>
   );

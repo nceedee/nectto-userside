@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useState } from "react";
 import { AppLogo } from "./AppLogo/AppLogo";
@@ -18,7 +17,7 @@ export const Header: React.FC<HeaderProps> = () => {
 
   return (
     <header
-      className={`bg-primary shadow-md sticky w-full left-0 top-0 ${
+      className={`bg-primary shadow-md sticky w-full right-0 top-0 ${
         isSearchFocused ? "search-focused" : ""
       }`}
     >
@@ -28,7 +27,7 @@ export const Header: React.FC<HeaderProps> = () => {
             isSearchFocused ? "hidden" : ""
           }`}
         >
-          <AppLogo />
+          <AppLogo height={70} width={70} />
           <IconMenusLeft />
         </div>
         <div>
