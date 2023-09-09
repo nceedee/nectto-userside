@@ -3,3 +3,6 @@ export interface IMenuItem {
   link: string;
   name?: string;
 }
+export interface ISearchProps {
+  onFocusChange: (focused: boolean) => void;
+}
