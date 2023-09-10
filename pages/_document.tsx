@@ -8,7 +8,7 @@ const Document = () => {
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
       />
-      <body>
+      <body className="select-none">
         <Main />
         <NextScript />
       </body>
