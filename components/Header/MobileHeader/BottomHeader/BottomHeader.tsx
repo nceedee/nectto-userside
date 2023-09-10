@@ -1,42 +1,54 @@
+import * as React from "react";
 import { useRouter } from "next/router";
-import { IMenuItem } from "@/base/models/module.interface";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { MenuMobile } from "../../IconMenus/Menus";
 
-export const BottomHeader = () => {
+const BottomHeader = () => {
   const router = useRouter();
+
+  // Get the initial value based on the current route
+  const initialValue =
+    MenuMobile.find((menu) => `/${menu.link}` === router.asPath)?.label ||
+    "recents";
+  const [value, setValue] = React.useState(initialValue);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
 
   const handleMenuItemClick = (link: string) => {
     router.push(link);
   };
 
   return (
-    <div className="bg-primary shadow-md border-t fixed p-4 w-full z-50 bottom-0 ">
-      <ul className="flex items-center justify-between w-full">
-        {MenuMobile.map((menu: IMenuItem, index: number) => {
-          // Check if the current menu link matches the router's path
+    <div className="fixed bottom-0 left-0 border-t text-black right-0 bg-primary">
+      <BottomNavigation
+        sx={{ width: "100%",display:"flex" ,justifyContent:"space-between" }}
+        value={value}
+        onChange={handleChange}
+      >
+        {MenuMobile.map((menu, index) => {
           const isActive = router.asPath === menu.link;
 
-          // Apply the 'active' class if it's the active link
-          const liClassName = `cursor-pointer ${isActive ? "active" : ""}`;
-
           return (
-            <li
+            <BottomNavigationAction
               key={index}
-              className={liClassName}
+              label={menu.label}
+              value={menu.label}
+              icon={menu.icon}
+              sx={{
+                color: isActive ? "blueviolet" : "black",
+                fontWeight: isActive ? "bold" : undefined,
+              }}
               onClick={() => handleMenuItemClick(menu.link)}
-            >
-              {menu.icon}
-            </li>
+            />
           );
         })}
-      </ul>
-      <style jsx>{`
-        .active {
-          color: blueviolet;
-        }
-      `}</style>
+      </BottomNavigation>
     </div>
   );
 };
 
 export default BottomHeader;
+

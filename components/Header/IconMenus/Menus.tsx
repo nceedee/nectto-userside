@@ -22,9 +22,9 @@ export const MenusTwo = [
 ];
 
 export const MenuMobile = [
-  { icon: <HouseSidingIcon />, link: "/" },
-  { icon: <PeopleIcon />, link: "/community", name: "community" },
-  { icon: <NotificationsNoneIcon />, link: "/notification" },
-  { icon: <MessageIcon />, link: "/chats" },
-  { icon: <Diversity1Icon />, link: "/friends" },
+  { icon: <HouseSidingIcon />, link: "/" , label: "Home"},
+  { icon: <PeopleIcon />, link: "/community", label: "community" },
+  { icon: <NotificationsNoneIcon />, link: "/notification",label:"notification" },
+  { icon: <MessageIcon />, link: "/chats",label:"chats" },
+  { icon: <Diversity1Icon />, link: "/friends" ,label:"friends"},
 ];
