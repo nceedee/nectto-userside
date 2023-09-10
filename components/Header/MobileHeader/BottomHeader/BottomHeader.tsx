@@ -10,7 +10,7 @@ export const BottomHeader = () => {
   };
 
   return (
-    <div className="bg-primary-500 shadow-md border-t fixed p-4 w-full  bottom-0 ">
+    <div className="bg-primary shadow-md border-t fixed p-4 w-full z-50 bottom-0 ">
       <ul className="flex items-center justify-between w-full">
         {MenuMobile.map((menu: IMenuItem, index: number) => {
           // Check if the current menu link matches the router's path
@@ -38,3 +38,5 @@ export const BottomHeader = () => {
     </div>
   );
 };
+
+export default BottomHeader;
