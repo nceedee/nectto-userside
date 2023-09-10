@@ -73,7 +73,6 @@ export const Search: React.FC<ISearchProps> = ({ onFocusChange }) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-       
       </SearchSide>
     </Toolbar>
   );
