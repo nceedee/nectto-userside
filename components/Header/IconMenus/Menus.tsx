@@ -20,3 +20,11 @@ export const MenusTwo = [
   { icon: <Diversity1Icon />, link: "/friends" },
   { icon: <AddCircleOutlineIcon />, link: "/createpost" },
 ];
+
+export const MenuMobile = [
+  { icon: <HouseSidingIcon />, link: "/" },
+  { icon: <PeopleIcon />, link: "/community", name: "community" },
+  { icon: <NotificationsNoneIcon />, link: "/notification" },
+  { icon: <MessageIcon />, link: "/chats" },
+  { icon: <Diversity1Icon />, link: "/friends" },
+];
