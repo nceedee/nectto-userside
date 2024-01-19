@@ -1,54 +1,49 @@
+// BottomHeader.tsx
+
 import * as React from "react";
 import { useRouter } from "next/router";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { MenuMobile } from "../../IconMenus/Menus";
+import HomeIcon from "@mui/icons-material/Home";
+import PeopleIcon from '@mui/icons-material/People';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import ChatIcon from '@mui/icons-material/Chat';
+import Diversity1Icon from '@mui/icons-material/Diversity1';
+import { BottomNavigation } from "./BottomNavigation";
 
-const BottomHeader = () => {
+const MenuItems = [
+  { label: "home", icon: <HomeIcon />, link: "/" },
+  { label: "community", icon: <PeopleIcon />, link: "/community" },
+  { label: "notification", icon: <NotificationsIcon />, link: "/notification" },
+  { label: "chats", icon: <ChatIcon />, link: "/chats" },
+  { label: "friends", icon: <Diversity1Icon />, link: "/friends" },
+];
+
+
+
+const BottomHeader: React.FC = () => {
   const router = useRouter();
 
-  // Get the initial value based on the current route
   const initialValue =
-    MenuMobile.find((menu) => `/${menu.link}` === router.asPath)?.label ||
-    "recents";
+    MenuItems.find((menu) => `/${menu.link}` === router.asPath)?.label || "home";
+
   const [value, setValue] = React.useState(initialValue);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
-  const handleMenuItemClick = (link: string) => {
+  const handleMenuItemClick = (link: string, label: string) => {
     router.push(link);
+    setValue(label);
   };
 
   return (
-    <div className="fixed bottom-0 left-0 border-t text-black right-0 bg-primary">
+    <div>
       <BottomNavigation
-        sx={{ width: "100%",display:"flex" ,justifyContent:"space-between" }}
-        value={value}
-        onChange={handleChange}
-      >
-        {MenuMobile.map((menu, index) => {
-          const isActive = router.asPath === menu.link;
-
-          return (
-            <BottomNavigationAction
-              key={index}
-              label={menu.label}
-              value={menu.label}
-              icon={menu.icon}
-              sx={{
-                color: isActive ? "blueviolet" : "black",
-                fontWeight: isActive ? "bold" : undefined,
-              }}
-              onClick={() => handleMenuItemClick(menu.link)}
-            />
-          );
-        })}
-      </BottomNavigation>
+        items={MenuItems.map((item) => ({
+          ...item,
+          isActive: value === item.label,
+        }))}
+        onItemClick={(link, label) => handleMenuItemClick(link, label)}
+      />
     </div>
   );
 };
 
-export default BottomHeader;
+export default BottomHeader
 
